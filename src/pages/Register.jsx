@@ -8,10 +8,12 @@ const Register = () => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [dateOfBirth, setDateOfBirth] = useState('')
-
+  // I love commits
   const validatePasswrod = () => {
     let isValid = true;
-    if (password !== '' && confirm)
+    if (password !== '' && confirm) {
+
+    }
   }    
 
     return (
