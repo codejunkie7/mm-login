@@ -1,4 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import { useState, useEffect } from "react"
 
 const Register = () => {
 
@@ -9,15 +10,28 @@ const Register = () => {
   const [lastName, setLastName] = useState('')
   const [dateOfBirth, setDateOfBirth] = useState('')
   // I love commits
-  const validatePasswrod = () => {
-    let isValid = true;
-    if (password !== '' && confirm) {
+//   const validatePasswrod = () => {
+//     let isValid = true;
+//     if (password !== '' && confirm) {
 
-    }
-  }    
+//     }
+//   }    
 
     return (
-        <h1>Register</h1>
+        <div className="register">
+            <div className="register-auth">
+                <form>
+                    <input
+                      type="email"
+                      value={email}
+                      placeholder="Enter your email"
+                      required
+                      onChange={e => setEmail(e.target.value)}
+                    />
+                </form>
+
+            </div>
+        </div>
     )
 }
 
