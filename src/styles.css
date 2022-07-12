@@ -1,0 +1,16 @@
+/* Register Form */
+
+.register-auth {
+    width: 90%;
+    max-width: 400px;
+    border: 1px solid #dcdcdc;
+    padding: 20px;
+    text-align: center;
+}
+
+.register-auth form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 auto 10px auto;
+}
