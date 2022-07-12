@@ -1,7 +1,7 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
-import { auth } from "../backend/firebase"
 import { useState, useEffect } from "react"
 import { Button } from "@mui/material"
+import { auth } from "../backend/firebase"
 
 const Register = () => {
 
@@ -25,17 +25,27 @@ const Register = () => {
     return isValid
   }    
 
+  // Declare auth constant to authenticate firebase user
   const register = (e) => {
     e.preventDefault();
     if (validatePassword()) {
         // Creates a new user with email and password into the FireBase Auth
-        createUserWithEmailAndPassword()
+        createUserWithEmailAndPassword(auth, email, password, firstName, lastName, dateOfBirth)
+        .then((userCredential) => {
+            //Signed in
+            const user = userCredential.user;
+            console.log("User", user)
+        })
+        .catch((err) => {
+            console.log("Issue with register", err);
+        })
     }
   }
 
     return (
         <div className="register">
             <div className="register-auth">
+                <h3>Register</h3>
                 <form onSubmit={register}>
                     <input
                       type="email"
@@ -80,7 +90,7 @@ const Register = () => {
                     <input
                       type="dateOfBirth"
                       value={dateOfBirth}
-                      placeholder="Enter your password"
+                      placeholder="Enter your Birthday"
                       required
                       onChange={e => setDateOfBirth(e.target.value)}
                     />
