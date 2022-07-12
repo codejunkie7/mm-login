@@ -28,6 +28,46 @@ const Register = () => {
                       required
                       onChange={e => setEmail(e.target.value)}
                     />
+
+                    <input
+                      type="password"
+                      value={password}
+                      placeholder="Enter your password"
+                      required
+                      onChange={e => setPassword(e.target.value)}
+                    />
+
+                    <input
+                      type="password"
+                      value={confirmPassword}
+                      placeholder="Re-enter your password"
+                      required
+                      onChange={e => setConfirmPassword(e.target.value)}
+                    />
+
+                    <input
+                      type="firstName"
+                      value={firstName}
+                      placeholder="First Name"
+                      required
+                      onChange={e => setFirstName(e.target.value)}
+                    />
+
+                    <input
+                      type="lastName"
+                      value={lastName}
+                      placeholder="Last Name"
+                      required
+                      onChange={e => setLastName(e.target.value)}
+                    />
+
+                    <input
+                      type="dateOfBirth"
+                      value={dateOfBirth}
+                      placeholder="Enter your password"
+                      required
+                      onChange={e => setDateOfBirth(e.target.value)}
+                    />
                 </form>
 
             </div>
