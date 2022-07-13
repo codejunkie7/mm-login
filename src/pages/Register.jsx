@@ -2,6 +2,7 @@ import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "
 import { useState, useEffect } from "react"
 import { Button } from "@mui/material"
 import { auth } from "../backend/firebase"
+import { db } from "../backend/firebase"
 
 const Register = () => {
 
@@ -26,7 +27,7 @@ const Register = () => {
   }    
 
   const validateDOB = () => {
-    
+
   }
 
   // Declare auth constant to authenticate firebase user
