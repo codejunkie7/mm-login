@@ -1,4 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth"
+import { collection, addDoc, Timestamp } from "firebase/firestore"
 import { useState, useEffect } from "react"
 import { Button } from "@mui/material"
 import { auth } from "../backend/firebase"
@@ -26,12 +27,8 @@ const Register = () => {
     return isValid
   }    
 
-  const validateDOB = () => {
-
-  }
-
   // Declare auth constant to authenticate firebase user
-  const register = (e) => {
+  const authRegister = (e) => {
     e.preventDefault();
     if (validatePassword()) {
         // Creates a new user with email and password into the FireBase Auth
@@ -52,6 +49,31 @@ const Register = () => {
             console.log("Issue with register", err);
         })
     }
+  }
+
+  // Sending User Info to DB 
+  const writeUserData = async (e) => {
+    e.preventDefault();
+    try {
+        await addDoc(collection(db, "users"), {
+            email: email,
+            password: password,
+            firstName: firstName,
+            lastName: lastName,
+            dateOfBirth: dateOfBirth,
+            createdAt: Timestamp.now()
+        })
+    } catch (err) {
+        console.log('Issue with writing user data', err);
+    }
+  }
+
+  // Function to run registration to database and auth
+  const register = () => {
+    let validation = true;
+    validation &= authRegister()
+    validation &= writeUserData()
+    return validation
   }
 
     return (

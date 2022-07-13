@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"
-import { getDatabase } from "firebase/database";
+import { getFirestore } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -14,7 +14,6 @@ const firebaseConfig = {
   storageBucket: "mm-login-3bbf6.appspot.com",
   messagingSenderId: "141832861456",
   appId: "1:141832861456:web:d48c379dd83f09ea891795",
-  databaseURL: "https://mm-login-3bbf6-default-rtdb.firebaseio.com/"
 };
 
 // Initialize Firebase
@@ -24,6 +23,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
 
 // Initialize Realtime Database and get a reference to the service
-const db = getDatabase(app);
+const db = getFirestore(app);
 
 export { auth, db }; 
