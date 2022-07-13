@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth"
 import { useState, useEffect } from "react"
 import { Button } from "@mui/material"
 import { auth } from "../backend/firebase"
@@ -25,6 +25,10 @@ const Register = () => {
     return isValid
   }    
 
+  const validateDOB = () => {
+    
+  }
+
   // Declare auth constant to authenticate firebase user
   const register = (e) => {
     e.preventDefault();
@@ -34,6 +38,13 @@ const Register = () => {
         .then((userCredential) => {
             //Signed in
             const user = userCredential.user;
+            sendEmailVerification(user)
+            .then(() => {
+                console.log('Verification Email Sent')
+            })
+            .catch(() => {
+                console.log('Issue with Email Verification')
+            })
             console.log("User", user)
         })
         .catch((err) => {
