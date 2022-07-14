@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth"
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth"
 import { collection, addDoc, Timestamp } from "firebase/firestore"
 import { useState, useEffect } from "react"
 import { Button } from "@mui/material"
@@ -14,7 +14,7 @@ const Register = () => {
   const [lastName, setLastName] = useState("")
   const [dateOfBirth, setDateOfBirth] = useState("")
   const [error, setError] = useState("")
-  
+ 
   // Function to ensure password input is correct
   const validatePassword = () => {
     let isValid = true;
@@ -69,18 +69,19 @@ const Register = () => {
   }
 
   // Function to run registration to database and auth
-  const register = () => {
-    let validation = true;
-    validation &= authRegister()
-    validation &= writeUserData()
-    return validation
-  }
+//   const register = () => {
+//     authRegister()
+//     writeUserData()
+//   }
 
     return (
         <div className="register">
             <div className="register-auth">
                 <h3>Register</h3>
-                <form onSubmit={register}>
+                <form onSubmit={() => {
+                    authRegister();
+                    writeUserData();
+                }}>
                     <input
                       type="email"
                       value={email}
