@@ -52,10 +52,9 @@ const Register = () => {
   }
 
   // Sending User Info to DB 
-  const writeUserData = async (e) => {
+  const writeUserData = (e) => {
     e.preventDefault();
-    try {
-        await addDoc(collection(db, "users"), {
+       addDoc(collection(db, "users"), {
             email: email,
             password: password,
             firstName: firstName,
@@ -63,24 +62,23 @@ const Register = () => {
             dateOfBirth: dateOfBirth,
             createdAt: Timestamp.now()
         })
-    } catch (err) {
-        console.log('Issue with writing user data', err);
+        .catch((err) => {
+            console.log("Issue with writing user data", err)
+        })
     }
-  }
 
   // Function to run registration to database and auth
-//   const register = () => {
-//     authRegister()
-//     writeUserData()
-//   }
+  const register = () => {
+    authRegister()
+    writeUserData()
+  }
 
     return (
         <div className="register">
             <div className="register-auth">
                 <h3>Register</h3>
                 <form onSubmit={() => {
-                    authRegister();
-                    writeUserData();
+                    register();
                 }}>
                     <input
                       type="email"
@@ -131,7 +129,6 @@ const Register = () => {
                     />
                     <Button variant="outlined" type="submit">Register</Button>
                 </form>
-
             </div>
         </div>
     )
