@@ -50,7 +50,7 @@ const Register = () => {
         })
     }
   }
-
+  // I really love comments
   // Sending User Info to DB 
   const writeUserData = (e) => {
     e.preventDefault();
