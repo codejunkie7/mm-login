@@ -20,7 +20,7 @@ const Register = () => {
     let isValid = true;
     if (password !== "" && confirmPassword !== "") {
       if (password !== confirmPassword) {
-        isValied = false;
+        isValid = false;
         setError("Passwords do not match")
       }   
     }
@@ -68,9 +68,9 @@ const Register = () => {
     }
 
   // Function to run registration to database and auth
-  const register = () => {
-    authRegister()
-    writeUserData()
+  const register = (e) => {
+    authRegister(e)
+    writeUserData(e)
   }
 
     return (
