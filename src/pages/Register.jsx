@@ -77,8 +77,8 @@ const Register = () => {
         <div className="register">
             <div className="register-auth">
                 <h3>Register</h3>
-                <form onSubmit={() => {
-                    register();
+                <form onSubmit={(e) => {
+                    register(e);
                 }}>
                     <input
                       type="email"
